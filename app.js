@@ -47,7 +47,13 @@ app.get('/listings/new', (req, res) => {
     res.render('Listings/show.ejs', { listing });
 });
 
+//CREATE ROUTE
 
+    app.post("/listings", async (req, res) => {
+  const newListing = new Listing(req.body.listing);
+  await newListing.save();
+  res.redirect("/listings");
+});
 // app.get('/testListing', async (req, res) => {
 //     let newListing = new Listing({
 //         title: "Beautiful Beach House",
