@@ -15,18 +15,36 @@ async function main() {
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
+app.use(express.urlencoded({ extended: true }));
 
 app.get('/', (req, res) => {
     
     res.send('Hello  i am root');
 });
-
+//Index route
 app.get('/listings',  async(req, res) => {
   const allListings = await Listing.find({});
   res.render("Listings/index.ejs", { allListings });
 
     });
  
+    //show rouye
+    // app.get('/listings/:id', async (req, res) => {
+    //     let id = req.params;
+    //    const listing = await Listing.findById(id);
+    //    res.render('Listings/show.ejs', { listing });
+    // });
+
+    app.get('/listings/:id', async (req, res) => {
+    // Option A: Destructuring (Cleaner)
+    const { id } = req.params; 
+    
+    // Option B: Direct Access
+    // let id = req.params.id; 
+
+    const listing = await Listing.findById(id);
+    res.render('Listings/show.ejs', { listing });
+});
 // app.get('/testListing', async (req, res) => {
 //     let newListing = new Listing({
 //         title: "Beautiful Beach House",
