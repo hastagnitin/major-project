@@ -41,6 +41,11 @@ app.get('/listings',  async(req, res) => {
     const listing = await Listing.findById(id);
     res.render('Listings/show.ejs', { listing });
 });
+
+//New route
+app.get('/listings/new', (req, res) => {
+
+});
 // app.get('/testListing', async (req, res) => {
 //     let newListing = new Listing({
 //         title: "Beautiful Beach House",
