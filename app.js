@@ -27,6 +27,11 @@ app.get('/listings',  async(req, res) => {
   res.render("Listings/index.ejs", { allListings });
 
     });
+
+    //New route
+app.get('/listings/new', (req, res) => {
+    res.render('Listings/new.ejs');
+});
  
     //show rouye
     
@@ -42,10 +47,7 @@ app.get('/listings',  async(req, res) => {
     res.render('Listings/show.ejs', { listing });
 });
 
-//New route
-app.get('/listings/new', (req, res) => {
 
-});
 // app.get('/testListing', async (req, res) => {
 //     let newListing = new Listing({
 //         title: "Beautiful Beach House",
